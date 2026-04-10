@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpdu2w2mcs7tr"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_j6jv1"]
+[ext_resource type="Texture2D" uid="uid://bquyv62dpb2yc" path="res://assets/Terra em chamas sob ataque alienígena.png" id="2_c1b6s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ubc0"]
+bg_color = Color(0.0823529, 0, 0.313726, 1)
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j6jv1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 646.0
+color = Color(0.239216, 0, 0.419608, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 646.0
+texture = ExtResource("2_c1b6s")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 264.0
+offset_right = 769.0
+offset_bottom = 325.0
+theme_override_font_sizes/font_size = 44
+text = "SPACE SURVIVAL"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 346.0
+offset_right = 669.0
+offset_bottom = 386.0
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_4ubc0")
+text = "INICIAR"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

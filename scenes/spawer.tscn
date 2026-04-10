@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd3k61sfqrcth"]
+
+[ext_resource type="Script" path="res://scripts/spawer.gd" id="1_ltboj"]
+[ext_resource type="PackedScene" uid="uid://dvyf0sywy5as4" path="res://scenes/enemy.tscn" id="2_dxpsb"]
+
+[node name="spawer" type="Node2D"]
+script = ExtResource("1_ltboj")
+inimigo_scene = ExtResource("2_dxpsb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
