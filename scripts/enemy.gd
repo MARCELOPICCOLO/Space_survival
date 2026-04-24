@@ -6,6 +6,7 @@ var player
 var vivo = true
 
 func _ready():
+	$AudioStreamPlayer2D2.play()
 	player = get_tree().get_first_node_in_group("player")
 	
 func _process(delta):
@@ -34,6 +35,8 @@ func tomar_dano(valor):
 		vivo = false
 
 func morrer():
+	if !$AudioStreamPlayer2D.is_playing():
+		$AudioStreamPlayer2D.play()
 	dar_pontos()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
@@ -46,3 +49,10 @@ func dar_pontos():
 
 func causar_dano():
 	return 10
+
+
+func _on_timer_timeout():
+	if !$AudioStreamPlayer2D2.is_playing():
+		$AudioStreamPlayer2D2.play()
+	
+	pass # Replace with function body.

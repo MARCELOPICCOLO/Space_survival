@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4yp15w7dgwoe"]
+[gd_scene load_steps=9 format=3 uid="uid://b4yp15w7dgwoe"]
 
 [ext_resource type="Texture2D" uid="uid://ch43abl87jlff" path="res://assets/terra.png" id="1_i87n6"]
 [ext_resource type="PackedScene" uid="uid://dpuwc7jouwjxg" path="res://scenes/player.tscn" id="1_lyukm"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_xl6gv"]
 [ext_resource type="PackedScene" uid="uid://cd3k61sfqrcth" path="res://scenes/spawer.tscn" id="2_bjgi2"]
 [ext_resource type="Texture2D" uid="uid://ds4sopia04ymn" path="res://assets/hud.png" id="3_ly2q6"]
+[ext_resource type="AudioStream" uid="uid://b23ig8laf4w1y" path="res://assets/712221__audiocoffee__emotive-abstract-short-version.wav" id="5_0lqer"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecnfo"]
 texture = ExtResource("1_i87n6")
@@ -19,6 +21,7 @@ texture = ExtResource("1_i87n6")
 sources/0 = SubResource("TileSetAtlasSource_ecnfo")
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_xl6gv")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_3g6ta")
@@ -111,5 +114,9 @@ theme_override_font_sizes/font_size = 23
 text = "REINICIAR"
 
 [node name="spawer" parent="." instance=ExtResource("2_bjgi2")]
+
+[node name="Audiomusic2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0lqer")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="Player" method="_on_button_pressed"]

@@ -21,6 +21,7 @@ var inimigos_na_area = []
 # ========================
 func _ready():
 	atualizar_hud()
+	$AudioStreamPlayer2D2.pitch_scale = 2.0
 
 # ========================
 # MOVIMENTO (get_axis)
@@ -43,6 +44,9 @@ func _physics_process(delta):
 func animation():
 	if velocity != Vector2.ZERO && !is_atacking:
 		$AnimationPlayer.play("walk")
+		if !$AudioStreamPlayer2D2.is_playing():
+			$AudioStreamPlayer2D2.play()
+			
 		return
 	if is_atacking:
 		$AnimationPlayer.play("atack")
@@ -61,6 +65,8 @@ func _process(delta):
 		atacar()
 
 func atacar():
+	if! $AudioStreamPlayer2D.is_playing():
+		$AudioStreamPlayer2D.play()
 	if inimigos_na_area.size() > 0:
 		var alvo = inimigos_na_area[0] # pega o primeiro inimigo
 	
